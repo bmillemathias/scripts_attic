@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+# author: Baptiste Mille-Mathias
+# This script displays all sizes (provided by Gtk.IconSize) for a given icon and
+# will also display its symbolic counterpart
 
 import sys
 from gi.repository import Gtk
@@ -15,15 +18,15 @@ w.connect("delete-event", Gtk.main_quit)
 box = Gtk.Box()
 w.add(box)
 
-# TODO: find a way to enumerate all Gtk.IconSize
+# TODO: Find a way to enumerate all Gtk.IconSize
 for size in range(0,7):
     vbox = Gtk.VBox()
 
     i1 = Gtk.Image()
-    i1.set_from_icon_name(icon_name + "-symbolic", size)
+    i1.set_from_icon_name(icon_name, size)
 
     i2 = Gtk.Image()
-    i2.set_from_icon_name(icon_name, size)
+    i2.set_from_icon_name(icon_name + "-symbolic", size)
 
     b1 = Gtk.Button()
     b1.set_image(i1)
@@ -35,8 +38,5 @@ for size in range(0,7):
     vbox.add(b2)
     box.add(vbox)
 
-#box.add(b1)
-#box.add(b2)
 w.show_all()
-
 Gtk.main()
