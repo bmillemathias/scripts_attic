@@ -17,6 +17,8 @@ w.set_title("Icon Viewer")
 w.connect("delete-event", Gtk.main_quit)
 
 grid = Gtk.Grid()
+grid.set_column_homogeneous(True)
+
 label = Gtk.Label()
 label.set_markup("<b>%s</b>" % icon_name)
 grid.attach(label, 0, 0, 7, 1)
