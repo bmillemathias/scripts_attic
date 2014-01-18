@@ -22,7 +22,7 @@ label.set_markup("<b>%s</b>" % icon_name)
 grid.attach(label, 0, 0, 7, 1)
 
 # TODO: Find a way to enumerate all Gtk.IconSize
-for size in range(0,7):
+for size in Gtk.IconSize.__enum_values__:
     i1 = Gtk.Image()
     i1.set_from_icon_name(icon_name, size)
 
@@ -31,9 +31,11 @@ for size in range(0,7):
 
     b1 = Gtk.Button()
     b1.set_image(i1)
+    b1.set_tooltip_text(Gtk.IconSize.__enum_values__[size].__str__())
 
     b2 = Gtk.Button()
     b2.set_image(i2)
+    b2.set_tooltip_text(Gtk.IconSize.__enum_values__[size].__str__())
 
     grid.attach(b1, size, 1, 1, 1)
     grid.attach(b2, size, 2, 1, 1)
