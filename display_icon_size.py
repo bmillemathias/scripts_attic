@@ -13,15 +13,16 @@ except IndexError:
     sys.exit(1)
 
 w = Gtk.Window()
+w.set_title("Icon Viewer")
 w.connect("delete-event", Gtk.main_quit)
 
-box = Gtk.Box()
-w.add(box)
+grid = Gtk.Grid()
+label = Gtk.Label()
+label.set_markup("<b>%s</b>" % icon_name)
+grid.attach(label, 0, 0, 7, 1)
 
 # TODO: Find a way to enumerate all Gtk.IconSize
 for size in range(0,7):
-    vbox = Gtk.VBox()
-
     i1 = Gtk.Image()
     i1.set_from_icon_name(icon_name, size)
 
@@ -34,9 +35,9 @@ for size in range(0,7):
     b2 = Gtk.Button()
     b2.set_image(i2)
 
-    vbox.add(b1)
-    vbox.add(b2)
-    box.add(vbox)
+    grid.attach(b1, size, 1, 1, 1)
+    grid.attach(b2, size, 2, 1, 1)
 
+w.add(grid)
 w.show_all()
 Gtk.main()
